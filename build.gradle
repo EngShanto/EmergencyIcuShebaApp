@@ -1,0 +1,17 @@
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        //noinspection UseTomlInstead
+        classpath 'com.google.gms:google-services:4.4.2'
+        // Example dependency
+        // ... other classpath dependencies
+    }
+}
+
+plugins {
+    id 'com.android.application' version '8.7.3' apply false
+    id 'com.android.library' version '8.7.3' apply false
+}

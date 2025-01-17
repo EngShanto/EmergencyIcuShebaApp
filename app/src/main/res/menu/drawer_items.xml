@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/profile"
+        android:title="Profile"
+        android:icon="@drawable/person_24"
+        tools:ignore="HardcodedText" />
+    <item
+        android:id="@+id/home"
+        android:title="Home"
+        android:icon="@drawable/home_24"
+        tools:ignore="HardcodedText" />
+    <item
+        android:id="@+id/menu"
+        android:title="Menu"
+        android:icon="@drawable/menu_24"
+        tools:ignore="HardcodedText" />
+    <item
+        android:id="@+id/settings"
+        android:title="Settings"
+        android:icon="@drawable/baseline_settings_24"
+        tools:ignore="HardcodedText" />
+
+
+</menu>

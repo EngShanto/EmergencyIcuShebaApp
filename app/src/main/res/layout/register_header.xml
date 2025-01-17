@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginTop="40dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
+
+        <ImageView
+            android:id="@+id/back_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15sp"
+            android:paddingTop="5sp"
+            android:paddingBottom="5sp"
+            android:src="@drawable/baseline_arrow_back_24"
+            tools:ignore="ContentDescription,ImageContrastCheck,ImageContrastCheck,RtlHardcoded,RtlSymmetry" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Emergency ICU Sheba"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText,SpUsage,TextContrastCheck,TextSizeCheck" />
+        <ImageView
+            android:id="@+id/button_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:paddingRight="15sp"
+            android:paddingTop="5sp"
+            android:paddingBottom="5sp"
+            android:src="@drawable/info_24"
+            tools:ignore="ContentDescription,ImageContrastCheck,RtlHardcoded,RtlSymmetry" />
+
+    </RelativeLayout>
+
+</LinearLayout>
