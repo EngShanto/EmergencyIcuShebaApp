@@ -2,10 +2,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
 
     <application
         android:allowBackup="true"
@@ -18,10 +26,35 @@
         android:theme="@style/Theme.ICUSheba"
         tools:targetApi="31">
         <activity
-            android:name=".Book_AppointmentActivity"
+            android:name=".ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".Boock_AppointmentActivity"
+            android:name=".BookingConfirmation"
+            android:exported="false" />
+        <activity
+            android:name=".Add_New_Hospital"
+            android:exported="false" />
+        <activity
+            android:name=".BookingInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ContractActivity"
+            android:exported="false"
+            android:noHistory="true" />
+        <activity
+            android:name=".Hospital_ListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HrDepartmentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Add_New_HR"
+            android:exported="false" />
+        <activity
+            android:name=".Book_AppointmentActivity"
             android:exported="false" />
         <activity
             android:name=".ICU_Activity"
@@ -53,7 +86,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCuK8Xn2Xy9dcGz6saIAgmXecEAsr2SC58" />
+            android:value="AIzaSyDV0SJrxspcGBb4UVL-Z3eUMcYQbOLBlQY" />
     </application>
 
 </manifest>

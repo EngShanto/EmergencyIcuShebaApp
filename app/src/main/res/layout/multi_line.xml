@@ -3,19 +3,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/black"
     android:padding="8dp">
 
-    <TextView
-        android:id="@+id/line_a"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Text View"
-        android:textColor="@color/white"
-        android:textSize="16dp"
-        android:textStyle="italic"
-        tools:ignore="HardcodedText,SpUsage,TextSizeCheck" />
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:text="Seat Type:"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/line_a"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.75"
+            android:text="Text View"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/line_b"
@@ -24,46 +42,52 @@
         android:text="Text View"
         android:textColor="@color/Yellow"
         android:textSize="16sp"
-        tools:ignore="HardcodedText,TextSizeCheck" />
-    <LinearLayout
-        android:layout_width="fill_parent"
+        tools:ignore="HardcodedText" />
+    <TextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="1">
+        android:id="@+id/line_d"
+        android:text="Text View"
+        android:textColor="@color/Yellow"
+        android:textSize="16sp"
+        tools:ignore="HardcodedText" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/line_c"
-            android:layout_width="0dp"
+            android:layout_width="90dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.22"
             android:text="Text View"
             android:textColor="@color/Yellow"
             android:textSize="12sp"
             android:textStyle="italic"
-            tools:ignore="HardcodedText,TextSizeCheck" />
+            tools:ignore="HardcodedText" />
 
         <TextView
-            android:id="@+id/line_d"
-            android:layout_width="0dp"
+            android:id="@+id/line_f"
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"
+            android:layout_weight="0.22"
             android:text="Text View"
             android:textColor="@color/Yellow"
-            android:textSize="16sp"
+            android:textSize="12sp"
             android:textStyle="italic"
-            tools:ignore="HardcodedText,TextSizeCheck" />
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/line_e"
-            android:layout_width="0dp"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
             android:text="Text View"
             android:textColor="@color/Yellow"
-            android:textSize="16sp"
+            android:textSize="12sp"
             android:textStyle="italic"
-            tools:ignore="HardcodedText,TextSizeCheck,VisualLintBounds" />
+            tools:ignore="HardcodedText,VisualLintBounds" />
     </LinearLayout>
-
-
 </LinearLayout>

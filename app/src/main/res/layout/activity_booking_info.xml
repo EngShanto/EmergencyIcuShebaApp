@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BookingInfoActivity"
+    android:background="@drawable/back2">
+    <include layout="@layout/header_booking_info" />
+    <TextView
+        android:id="@+id/Hospital_Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Default Text"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.06"
+        tools:ignore="HardcodedText" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="80dp"
+        android:fillViewport="true"
+        tools:ignore="UselessLeaf">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="end">
+
+            <GridLayout
+                android:id="@+id/title_home"
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:columnCount="2"
+                android:rowCount="20"
+                tools:ignore="UselessParent">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/Pending_Info"
+                    android:layout_width="100dp"
+                    android:layout_height="60dp"
+                    android:layout_row="0"
+                    android:layout_rowWeight="1"
+                    android:layout_column="0"
+                    android:layout_columnWeight="1"
+                    app:cardCornerRadius="8dp"
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:id="@+id/Booking_Pending"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        tools:ignore="UseCompoundDrawables">
+
+                        <ImageView
+                            android:layout_width="83dp"
+                            android:layout_height="71dp"
+                            android:src="@drawable/pending"
+                            tools:ignore="ContentDescription,ImageContrastCheck,ImageContrastCheck" />
+
+                        <TextView
+                            android:id="@+id/Booking"
+                            android:layout_width="160dp"
+                            android:layout_height="wrap_content"
+                            android:padding="2dp"
+                            android:text="Pending Information"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            tools:ignore="HardcodedText,TextSizeCheck" />
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/Approve_Info"
+                    android:layout_width="100dp"
+                    android:layout_height="60dp"
+                    android:layout_row="0"
+                    android:layout_rowWeight="1"
+                    android:layout_column="1"
+                    android:layout_columnWeight="1"
+                    app:cardCornerRadius="8dp"
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:id="@+id/Booking_information"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        tools:ignore="UseCompoundDrawables">
+
+                        <ImageView
+                            android:layout_width="83dp"
+                            android:layout_height="71dp"
+                            android:src="@drawable/approved"
+                            tools:ignore="ContentDescription,ImageContrastCheck" />
+
+                        <TextView
+                            android:id="@+id/Booking_info"
+                            android:layout_width="170dp"
+                            android:layout_height="wrap_content"
+                            android:padding="2dp"
+                            android:text="Approved Information"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            tools:ignore="DuplicateIds,HardcodedText,TextSizeCheck" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/Delete_Info"
+                    android:layout_width="100dp"
+                    android:layout_height="60dp"
+                    android:layout_row="1"
+                    android:layout_rowWeight="1"
+                    android:layout_column="0"
+                    android:layout_columnWeight="1"
+                    app:cardCornerRadius="8dp"
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        tools:ignore="UseCompoundDrawables">
+
+                        <ImageView
+                            android:layout_width="83dp"
+                            android:layout_height="71dp"
+                            android:src="@drawable/deleted"
+                            tools:ignore="ContentDescription,ImageContrastCheck" />
+
+                        <TextView
+                            android:layout_width="160dp"
+                            android:layout_height="wrap_content"
+                            android:padding="2dp"
+                            android:text="Deleted Information"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            tools:ignore="HardcodedText,TextSizeCheck" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/Reject_Info"
+                    android:layout_width="100dp"
+                    android:layout_height="60dp"
+                    android:layout_row="1"
+                    android:layout_rowWeight="1"
+                    android:layout_column="1"
+                    android:layout_columnWeight="1"
+                    app:cardCornerRadius="8dp"
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        tools:ignore="UseCompoundDrawables">
+
+                        <ImageView
+                            android:layout_width="83dp"
+                            android:layout_height="71dp"
+                            android:src="@drawable/rejected"
+                            tools:ignore="ContentDescription,ImageContrastCheck" />
+
+                        <TextView
+                            android:layout_width="170dp"
+                            android:layout_height="wrap_content"
+                            android:padding="2dp"
+                            android:text="Rejected Information"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            tools:ignore="HardcodedText,TextSizeCheck" />
+
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+            </GridLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/Info_Type"
+                    android:layout_width="210dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentStart="true"
+                    android:padding="2dp"
+                    android:text="Default Text"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText,TextSizeCheck" />
+
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/search"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="-2dp"
+                    android:layout_toEndOf="@id/Info_Type"
+                    app:submitBackground="@color/white"
+                    android:background="@drawable/search_border"
+                    app:searchIcon="@drawable/baseline_search_24"
+                    app:closeIcon="@drawable/baseline_close_24"
+                    />  <!-- Align it to the right of Info_Type -->
+
+            </RelativeLayout>
+
+            <include layout="@layout/tableview_info"/>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

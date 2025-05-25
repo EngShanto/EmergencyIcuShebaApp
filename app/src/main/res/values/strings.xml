@@ -1,3 +1,14 @@
 <resources>
+    <!-- App Name -->
     <string name="app_name">ICU Sheba</string>
+    <string name="select">Select-Hospital</string>
+
+    <!-- Firebase Configuration -->
+    <string name="firebase_database_url" translatable="false">https://icu-sheba-default-rtdb.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">919036967115</string>
+    <string name="google_api_key" translatable="false">AIzaSyDV0SJrxspcGBb4UVL-Z3eUMcYQbOLBlQY</string>
+    <string name="google_app_id" translatable="false">1:919036967115:android:247e1776d8972895aec34e</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDV0SJrxspcGBb4UVL-Z3eUMcYQbOLBlQY</string>
+    <string name="google_storage_bucket" translatable="false">icu-sheba.firebasestorage.app</string>
+    <string name="project_id" translatable="false">icu-sheba</string>
 </resources>

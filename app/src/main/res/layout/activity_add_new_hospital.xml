@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Add_New_Hospital">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Hospital Info -->
+            <EditText
+                android:id="@+id/hospitalName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Hospital Name"
+                android:importantForAutofill="no"
+                tools:ignore="HardcodedText,TextContrastCheck,TextFields,TouchTargetSizeCheck,VisualLintTextFieldSize" />
+
+            <EditText
+                android:id="@+id/hospitalAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Address"
+                tools:ignore="Autofill,HardcodedText,TextFields,TouchTargetSizeCheck,VisualLintTextFieldSize,TextContrastCheck" />
+
+            <EditText
+                android:id="@+id/hospitalPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phone Number"
+                android:inputType="phone"
+                tools:ignore="Autofill,HardcodedText,TextContrastCheck,TouchTargetSizeCheck,VisualLintTextFieldSize" />
+
+            <!-- Bed Types -->
+            <TextView
+                android:text="Select Seat Types:"
+                android:layout_marginTop="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:ignore="HardcodedText" />
+
+            <!-- Manual Seat -->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/checkManualSeat"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:text="Manual Seat"
+                    android:textSize="12sp"
+                    tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+
+                <EditText
+                    android:id="@+id/manualSeatPrice"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:hint="Fee"
+                    android:inputType="numberDecimal"
+                    android:textSize="11sp"
+                    tools:ignore="Autofill,HardcodedText,TextFields,TouchTargetSizeCheck,VisualLintTextFieldSize,DuplicateSpeakableTextCheck,TextContrastCheck" />
+
+                <EditText
+                    android:id="@+id/manualSeatTotal"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:hint="Total Seat"
+                    android:inputType="numberDecimal"                    android:textSize="11sp"
+                    tools:ignore="Autofill,HardcodedText,TextContrastCheck,TouchTargetSizeCheck,DuplicateSpeakableTextCheck,VisualLintTextFieldSize" />
+
+                <EditText
+                    android:id="@+id/manualSeatAvailable"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:textSize="10sp"
+                    android:padding="2sp"
+                    android:inputType="numberDecimal"
+                    android:hint="Available Seat"
+                    tools:ignore="Autofill,DuplicateSpeakableTextCheck,HardcodedText,SmallSp,TextContrastCheck,TextFields,TouchTargetSizeCheck,VisualLintTextFieldSize" />
+            </LinearLayout>
+
+            <!-- Electric Seat -->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/checkElectricSeat"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:text="Electric Seat"
+                    android:textSize="12sp"
+                    tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+
+                <EditText
+                    android:id="@+id/electricSeatPrice"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:hint="Fee"
+                    android:inputType="numberDecimal"
+                    android:textSize="11sp"
+                    tools:ignore="Autofill,HardcodedText,TextFields,TouchTargetSizeCheck,VisualLintTextFieldSize,TextContrastCheck" />
+
+                <EditText
+                    android:id="@+id/electricSeatTotal"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:hint="Total Seat"
+                    android:inputType="numberDecimal"                    android:textSize="11sp"
+                    tools:ignore="Autofill,HardcodedText,TouchTargetSizeCheck,TextContrastCheck,VisualLintTextFieldSize" />
+
+                <EditText
+                    android:id="@+id/electricSeatAvailable"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:hint="Available Seat"
+                    android:inputType="numberDecimal"
+                    android:textSize="10sp"
+                    android:padding="2sp"
+                    tools:ignore="Autofill,HardcodedText,SmallSp,TextContrastCheck,TextFields,TouchTargetSizeCheck,VisualLintTextFieldSize" />
+            </LinearLayout>
+
+            <!-- High-Law Seat -->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/checkHigh_LawSeat"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:text="High-Law Seat"
+                    android:textSize="12sp"
+                    tools:ignore="HardcodedText,TouchTargetSizeCheck,TextSizeCheck" />
+
+                <EditText
+                    android:id="@+id/High_LawSeatPrice"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:hint="Fee"
+                    android:inputType="numberDecimal"
+                    android:textSize="11sp"
+                    tools:ignore="Autofill,HardcodedText,TextFields,TouchTargetSizeCheck,VisualLintTextFieldSize,TextContrastCheck" />
+
+                <EditText
+                    android:id="@+id/High_LawSeatTotal"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:hint="Total Seat"
+                    android:inputType="numberDecimal"                    android:textSize="11sp"
+                    tools:ignore="Autofill,HardcodedText,TouchTargetSizeCheck,TextContrastCheck,VisualLintTextFieldSize" />
+
+                <EditText
+                    android:id="@+id/High_LawSeatAvailable"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:hint="Available Seat"
+                    android:textSize="10sp"
+                    android:inputType="numberDecimal"
+                    android:padding="2sp"
+                    tools:ignore="Autofill,HardcodedText,SmallSp,TextContrastCheck,TextFields,TouchTargetSizeCheck,VisualLintTextFieldSize" />
+            </LinearLayout>
+
+            <!-- Pediatric Seat -->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/checkPediatricSeat"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:text="Pediatric Seat"
+                    android:textSize="12sp"
+                    tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+
+                <EditText
+                    android:id="@+id/PediatricSeatPrice"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:hint="Fee"
+                    android:inputType="numberDecimal"                    android:textSize="11sp"
+                    tools:ignore="Autofill,HardcodedText,TextFields,TouchTargetSizeCheck,VisualLintTextFieldSize,TextContrastCheck" />
+
+                <EditText
+                    android:id="@+id/PediatricSeatTotal"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:hint="Total Seat"
+                    android:inputType="numberDecimal"                    android:textSize="11sp"
+                    tools:ignore="Autofill,HardcodedText,TouchTargetSizeCheck,TextContrastCheck,VisualLintTextFieldSize" />
+
+                <EditText
+                    android:id="@+id/PediatricSeatAvailable"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:hint="Available Seat"
+                    android:textSize="10sp"
+                    android:inputType="numberDecimal"
+                    android:padding="2sp"
+                    tools:ignore="Autofill,HardcodedText,SmallSp,TextContrastCheck,TextFields,TouchTargetSizeCheck,VisualLintTextFieldSize" />
+            </LinearLayout>
+
+            <!-- Neuro Seat -->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/checkNeuroSeat"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:text="Neuro Seat"
+                    android:textSize="12sp"
+                    tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+
+                <EditText
+                    android:id="@+id/NeuroSeatPrice"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:hint="Fee"
+                    android:inputType="numberDecimal"
+                    android:textSize="11sp"
+                    tools:ignore="Autofill,HardcodedText,TextFields,TouchTargetSizeCheck,VisualLintTextFieldSize,TextContrastCheck" />
+
+                <EditText
+                    android:id="@+id/NeuroSeatTotal"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:hint="Total Seat"
+                    android:inputType="numberDecimal"                    android:textSize="11sp"
+                    tools:ignore="Autofill,HardcodedText,TextContrastCheck,TouchTargetSizeCheck,VisualLintTextFieldSize" />
+
+                <EditText
+                    android:id="@+id/NeuroSeatAvailable"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:hint="Available Seat"
+                    android:textSize="10sp"
+                    android:inputType="numberDecimal"
+                    android:padding="2sp"
+                    tools:ignore="Autofill,HardcodedText,SmallSp,TextContrastCheck,TextFields,TouchTargetSizeCheck,VisualLintTextFieldSize" />
+            </LinearLayout>
+
+            <!-- Submit -->
+            <Button
+                android:id="@+id/submitBtn"
+                android:text="Add Hospital"
+                android:layout_marginTop="24dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="HardcodedText,VisualLintButtonSize" />
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

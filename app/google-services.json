@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "919036967115",
+    "firebase_url": "https://icu-sheba-default-rtdb.firebaseio.com",
     "project_id": "icu-sheba",
     "storage_bucket": "icu-sheba.firebasestorage.app"
   },
@@ -12,7 +13,24 @@
           "package_name": "com.example.icusheba"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "919036967115-rfregbidijhrlljata7os5rr8iumfin1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.icusheba",
+            "certificate_hash": "037bbfd29d6b4001fae29bbedafbf85599be6457"
+          }
+        },
+        {
+          "client_id": "919036967115-vttvv5leuq5lh1q8nqcm6s55iu90clbe.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.icusheba",
+            "certificate_hash": "e46ece28f3156b0bde67225d287f040f3127208e"
+          }
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDV0SJrxspcGBb4UVL-Z3eUMcYQbOLBlQY"

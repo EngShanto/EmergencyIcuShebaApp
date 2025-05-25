@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/confirmation_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/header_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Booking Information"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/booking_info_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header_text"
+        android:layout_marginTop="20dp"
+        android:background="#CC000000"
+        android:elevation="6dp"
+        android:fontFamily="monospace"
+        android:padding="16dp"
+        android:textColor="#FFFFFF"
+        android:textIsSelectable="true"
+        android:textSize="16sp"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/booking_listBtn"
+        android:layout_width="285dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/booking_info_text"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="55dp"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="Booking List"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText,SpUsage,TextSizeCheck">
+
+    </TextView>
+</RelativeLayout>

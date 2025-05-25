@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--suppress AndroidUnresolvableTag, AndroidElementNotAllowed -->
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="4dp"
+    app:cardCornerRadius="8dp"
+    android:elevation="4dp">
+    <LinearLayout
+        android:layout_width="121dp"
+        android:layout_height="118dp"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:id="@+id/hospitalImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/hospital_icon"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/hospitalName"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:textAlignment="center"
+            android:text="Hospital Name"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText" />
+        <TextView
+            android:id="@+id/hospitalAddress"
+            android:layout_width="114dp"
+            android:layout_height="15dp"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:text="Address"
+            tools:ignore="HardcodedText,SmallSp" />
+
+        <TextView
+            android:id="@+id/hospitalNumber"
+            android:layout_width="114dp"
+            android:layout_height="15dp"
+            android:layout_gravity="center"
+            android:text="Phone"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText,SmallSp,TextSizeCheck" />
+
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

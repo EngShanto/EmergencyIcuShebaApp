@@ -2,143 +2,109 @@ package com.example.icusheba;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Adapter;
-import android.widget.AdapterView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 public class ICU_Activity extends AppCompatActivity {
-    private final String[][] Icu_Details1=
-            {
-        {"Beds Name : Manual Beds","Hospital Address:Mirpur 02,Dhaka","Available Beds:120","Mobile Number : 09666-750075","600"},
-        {"Beds Name : Electric Beds","Hospital Address:Mirpur 02,Dhaka","Available Beds:120","Mobile Number : 09666-750075","620"},
-        {"Beds Name : High-low Beds","Hospital Address:Mirpur 02,Dhaka","Available Beds:120","Mobile Number : 09666-750075","630"},
-        {"Beds Name : Pediatric Beds","Hospital Address:Mirpur 02,Dhaka","Available Beds:120","Mobile Number : 09666-750075","650"},
-        {"Beds Name : Neuro Beds","Hospital Address:Mirpur 02,Dhaka","Available Beds:120","Mobile Number : 09666-750075","700"}
-    };
-    private final String[][] Icu_Details2=
-            {
-                    {"Beds Name : Manual Beds","Hospital Address:House-06,Road-04,Dhanmondi,Dhaka","Available Beds:120","Mobile Number :01766663222","600"},
-                    {"Beds Name : Electric Beds","Hospital Address:House-06,Road-04,Dhanmondi,Dhaka","Available Beds:120","Mobile Number : 01766663222","620"},
-                    {"Beds Name : High-low Beds","Hospital Address:House-06,Road-04,Dhanmondi,Dhaka","Available Beds:120","Mobile Number : 01766663222","630"},
-                    {"Beds Name : Pediatric Beds","Hospital Address:House-06,Road-04,Dhanmondi,Dhaka","Available Beds:120","Mobile Number : 01766663222","650"},
-                    {"Beds Name : Neuro Beds","Hospital Address:House-06,Road-04,Dhanmondi,Dhaka","Available Beds:120","Mobile Number : 01766663222","700"}
-            };
-    private final String[][] Icu_Details3=
-            {
-                    {"Beds Name : Manual Beds","Hospital Address:Shahbagh,Dhaka","Available Beds:120","Mobile Number : 017140066706","600"},
-                    {"Beds Name : Electric Beds","Hospital Address:Shahbagh,Dhaka","Available Beds:120","Mobile Number : 017140066706","620"},
-                    {"Beds Name : High-low Beds","Hospital Address:Shahbagh,Dhaka","Available Beds:120","Mobile Number : 017140066706","630"},
-                    {"Beds Name : Pediatric Beds","Hospital Address:Shahbagh,Dhaka","Available Beds:120","Mobile Number : 017140066706","650"},
-                    {"Beds Name : Neuro Beds","Hospital Address:Shahbagh,Dhaka","Available Beds:120","Mobile Number : 017140066706","700"}
-            };
-    private final String[][] Icu_Details4=
-            {
-                    {"Beds Name : Manual Beds","Hospital Address:Shyamoli,Mirpur,Dhaka","Available Beds:120","Mobile Number : 09666700100","600"},
-                    {"Beds Name : Electric Beds","Hospital Address:Shyamoli,Mirpur,Dhaka","Available Beds:120","Mobile Number : 09666700100","620"},
-                    {"Beds Name : High-low Beds","Hospital Address:Shyamoli,Mirpur,Dhaka","Available Beds:120","Mobile Number : 09666700100","630"},
-                    {"Beds Name : Pediatric Beds","Hospital Address:Shyamoli,Mirpur,Dhaka","Available Beds:120","Mobile Number : 09666700100","650"},
-                    {"Beds Name : Neuro Beds","Hospital Address:Shyamoli,Mirpur,Dhaka","Available Beds:120","Mobile Number : 09666700100","700"}
-            };
-    private final String[][] Icu_Details5=
-            {
-                    {"Beds Name : Manual Beds","Hospital Address:Gulshan,Dhaka","Available Beds:120","Mobile Number : +88028836444","600"},
-                    {"Beds Name : Electric Beds","Hospital Address:Gulshan,Dhaka","Available Beds:120","Mobile Number : +88028836444","620"},
-                    {"Beds Name : High-low Beds","Hospital Address:Gulshan,Dhaka","Available Beds:120","Mobile Number : +88028836444","630"},
-                    {"Beds Name : Pediatric Beds","Hospital Address:Gulshan,Dhaka","Available Beds:120","Mobile Number : +88028836444","650"},
-                    {"Beds Name : Neuro Beds","Hospital Address:Gulshan,Dhaka","Available Beds:120","Mobile Number : +88028836444","700"}
-            };
-    private final String[][] Icu_Details6=
-            {
-                    {"Beds Name : Manual Beds","Hospital Address:Gandaria,Dhaka","Available Beds:120","Mobile Number : 01787683333","600"},
-                    {"Beds Name : Electric Beds","Hospital Address:Gandaria,Dhaka","Available Beds:120","Mobile Number : 01787683333","620"},
-                    {"Beds Name : High-low Beds","Hospital Address:Gandaria,Dhaka","Available Beds:120","Mobile Number : 01787683333","630"},
-                    {"Beds Name : Pediatric Beds","Hospital Address:Gandaria,Dhaka","Available Beds:120","Mobile Number : 01787683333","650"},
-                    {"Beds Name : Neuro Beds","Hospital Address:Gandaria,Dhaka","Available Beds:120","Mobile Number : 01787683333","700"}
-            };
 
     TextView tv;
-    String[][]Icu_Details = {};
     ArrayList<HashMap<String, String>> list;
-    HashMap<String,String>item;
-    Adapter sa;
+    FirebaseFirestore db;
+    String hospitalName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate( savedInstanceState );
-        EdgeToEdge.enable( this );
-        setContentView( R.layout.activity_icu );
-        tv = findViewById( R.id.Tittle );
-        Intent it = getIntent();
-        String title = it.getStringExtra( "Title" );
-        tv.setText( title );
-        assert title != null;
-        //noinspection IfCanBeSwitch
-        if (title.equals( "National Heart Foundation Hospital" )) {
-            Icu_Details = Icu_Details1;
-            }
-        else if (title.equals( "LabAid Hospital" )) {
-            Icu_Details = Icu_Details2;
-            }
-        else if (title.equals( "Ibrahim Cardiac Hospital" )) {
-            Icu_Details = Icu_Details3;
-            }
-        else if (title.equals( "Bangladesh Specialized Hospital Ltd" )) {
-            Icu_Details = Icu_Details4;
-            }
-        else if (title.equals( "United Hospital" )) {
-            Icu_Details = Icu_Details5;
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_icu);
+
+        db = FirebaseFirestore.getInstance();
+        tv = findViewById(R.id.Tittle);
+        ListView listView = findViewById(R.id.List_View);
+
+        Intent intent = getIntent();
+        hospitalName = intent.getStringExtra("hospitalName");
+
+        if (hospitalName == null || hospitalName.isEmpty()) {
+            Toast.makeText(this, "Hospital name not found", Toast.LENGTH_SHORT).show();
+            return;
         }
-        else if (title.equals( "Asgar Ali Hospital" )) {
-            Icu_Details = Icu_Details6;
-        }
-        ViewCompat.setOnApplyWindowInsetsListener( findViewById( R.id.main ), (v, insets) -> {
-            Insets systemBars = insets.getInsets( WindowInsetsCompat.Type.systemBars() );
-            v.setPadding( systemBars.left, systemBars.top, systemBars.right, systemBars.bottom );
-            return insets;
-        } );
+
+        tv.setText(hospitalName);
         list = new ArrayList<>();
-        for (String[] icuDetail : Icu_Details) {
-            item = new HashMap<>();
-            item.put( "line1", icuDetail[0] );
-            item.put( "line2", icuDetail[1] );
-            item.put( "line3", icuDetail[2] );
-            item.put( "line4", icuDetail[3] );
-            item.put( "line5","Cons Fees:"+icuDetail[4]+"/-" );
-            list.add( item );
 
-        }
-        sa = new SimpleAdapter( this, list, R.layout.multi_line,new String[]{"line1", "line2", "line3", "line4", "line5"},
-                new int[]{R.id.line_a, R.id.line_b, R.id.line_c, R.id.line_d, R.id.line_e}
-        );
-        ListView lst = findViewById( R.id.List_View );
-        lst.setAdapter( (ListAdapter) sa );
-        lst.setOnItemClickListener( new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                Intent it = new Intent( ICU_Activity.this, Book_AppointmentActivity.class );
-                it.putExtra( "text1", title );
-                it.putExtra( "text2", Icu_Details[position][0] );
-                it.putExtra( "text3", Icu_Details[position][1] );
-                it.putExtra( "text4", Icu_Details[position][3] );
-                it.putExtra( "text5", Icu_Details[position][4] );
-                startActivity( it );
+        // 🔽 Fetch data from Firebase
+        db.collection("Hospital_Data").document(hospitalName)
+                .get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    if (documentSnapshot.exists()) {
+                        Map<String, Object> data = documentSnapshot.getData();
+                        if (data == null) return;
 
-            }
-        } );
+                        String address = (String) data.get("Hospital_Address");
+                        String phone = (String) data.get("Hospital_Number");
+                        @SuppressWarnings("unchecked")
+                        Map<String, Object> beds = (Map<String, Object>) data.get("Seat Type");
 
+                        if (beds != null) {
+                            for (Map.Entry<String, Object> entry : beds.entrySet()) {
+                                String bedType = entry.getKey();
+                                @SuppressWarnings("unchecked")
+                                Map<String, Object> bedInfo = (Map<String, Object>) entry.getValue();
 
+                                //noinspection DataFlowIssue
+                                String available = bedInfo.get("available").toString();
+                                String total = Objects.requireNonNull(bedInfo.get("total")).toString();
+                                String price = Objects.requireNonNull(bedInfo.get("price")).toString();
+
+                                HashMap<String, String> item = new HashMap<>();
+                                item.put("line_a", bedType);  // Bed Type
+                                item.put("line_b", "Hospital Address: " + address);  // Address
+                                item.put("line_c", "Available Seats: " + available);  // Availability
+                                item.put("line_d", "Phone: " + phone);  // Mobile Number
+                                item.put("line_e", "Fees: " + price + "/-");  // Price
+                                item.put("line_f", "Total Seats:" + total);
+
+                                list.add(item);
+                            }
+
+                            SimpleAdapter adapter = new SimpleAdapter(
+                                    ICU_Activity.this,
+                                    list,
+                                    R.layout.multi_line,
+                                    new String[]{"line_a", "line_b", "line_c", "line_d", "line_e", "line_f"},
+                                    new int[]{R.id.line_a, R.id.line_b, R.id.line_c, R.id.line_d, R.id.line_e, R.id.line_f}
+                            );
+                            listView.setAdapter(adapter);
+
+                            // 🔽 Item Click Listener
+                            listView.setOnItemClickListener((adapterView, view, position, id) -> {
+                                HashMap<String, String> selectedItem = list.get(position);
+                                Intent bookIntent = new Intent(ICU_Activity.this, Book_AppointmentActivity.class);
+                                bookIntent.putExtra("hospitalName", hospitalName);
+                                bookIntent.putExtra("bedType", selectedItem.get("line_a"));
+                                bookIntent.putExtra("available", selectedItem.get("line_c"));
+                                bookIntent.putExtra("total", selectedItem.get("line_f"));
+                                bookIntent.putExtra("address", selectedItem.get("line_b"));
+                                bookIntent.putExtra("phone", selectedItem.get("line_d"));
+                                bookIntent.putExtra("fees", Objects.requireNonNull(selectedItem.get("line_e")).replace("Fees: ", "").replace("/-", ""));
+                                startActivity(bookIntent);
+                            });
+                        }
+
+                    } else {
+                        Toast.makeText(this, "Hospital data not found in Firebase", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(e -> Toast.makeText(ICU_Activity.this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
-
 }

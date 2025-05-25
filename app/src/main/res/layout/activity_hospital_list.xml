@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/Hospital_List_View"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    tools:context=".Hospital_ListActivity">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="120dp"
         tools:ignore="UselessLeaf">
         <LinearLayout
             android:layout_width="match_parent"
@@ -50,6 +50,7 @@
                         <TextView
                             android:layout_width="120dp"
                             android:layout_height="30dp"
+                            android:id="@+id/Name1"
                             android:text="National Heart Foundation Hospital"
                             android:textAlignment="center"
                             android:textColor="@color/black"
@@ -60,6 +61,7 @@
                         <TextView
                             android:layout_width="114dp"
                             android:layout_height="15dp"
+                            android:id="@+id/Address1"
                             android:text="Mirpur 02, Dhaka"
                             android:textAlignment="center"
                             android:textColor="@color/black"
@@ -70,6 +72,7 @@
                         <TextView
                             android:layout_width="114dp"
                             android:layout_height="15dp"
+                            android:id="@+id/Number1"
                             android:text="Contact:09666-750075"
                             android:textAlignment="center"
                             android:textColor="@color/black"
@@ -79,16 +82,18 @@
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
+
                 <androidx.cardview.widget.CardView
                     android:id="@+id/Card_View_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_row="0"
-                    android:layout_column="1"
                     android:layout_rowWeight="1"
+                    android:layout_column="1"
                     android:layout_columnWeight="1"
                     app:cardCornerRadius="8dp"
                     app:cardUseCompatPadding="true">
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -104,6 +109,7 @@
                             tools:ignore="ContentDescription,ImageContrastCheck" />
 
                         <TextView
+                            android:id="@+id/Name2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="LabAid Hospital"
@@ -113,6 +119,7 @@
                             tools:ignore="HardcodedText" />
 
                         <TextView
+                            android:id="@+id/Address2"
                             android:layout_width="130dp"
                             android:layout_height="25dp"
                             android:text="Address:House-06,Road-04,Dhanmondi,Dhaka–1205"
@@ -123,6 +130,7 @@
                             tools:ignore="HardcodedText,SmallSp,TextSizeCheck,TextContrastCheck" />
 
                         <TextView
+                            android:id="@+id/Number2"
                             android:layout_width="114dp"
                             android:layout_height="15dp"
                             android:text="Contact:01766663222"
@@ -134,6 +142,7 @@
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
+
                 <androidx.cardview.widget.CardView
                     android:id="@+id/Card_View_3"
                     android:layout_width="wrap_content"
@@ -161,6 +170,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:id="@+id/Name3"
                             android:text="Ibrahim Cardiac Hospital"
                             android:textAlignment="center"
                             android:textColor="@color/black"
@@ -170,6 +180,7 @@
                         <TextView
                             android:layout_width="145dp"
                             android:layout_height="25dp"
+                            android:id="@+id/Address3"
                             android:text="Address:122,Kazi Nazrul Islam Avenue,Shahbagh,Dhaka1000"
                             android:textAlignment="center"
                             android:textColor="@color/black"
@@ -180,6 +191,7 @@
                         <TextView
                             android:layout_width="114dp"
                             android:layout_height="15dp"
+                            android:id="@+id/Number3"
                             android:text="Contact:01714 006706"
                             android:textAlignment="center"
                             android:textColor="@color/black"
@@ -216,6 +228,7 @@
                         <TextView
                             android:layout_width="160dp"
                             android:layout_height="40dp"
+                            android:id="@+id/Name4"
                             android:text="Bangladesh Specialized Hospital Ltd.(BSHL)"
                             android:textAlignment="center"
                             android:textColor="@color/black"
@@ -225,6 +238,7 @@
                         <TextView
                             android:layout_width="130dp"
                             android:layout_height="25dp"
+                            android:id="@+id/Address4"
                             android:text="Address:21 Shyamoli,Mirpur Road,Dhaka-1207"
                             android:textAlignment="center"
                             android:textColor="@color/black"
@@ -235,6 +249,7 @@
                         <TextView
                             android:layout_width="124dp"
                             android:layout_height="15dp"
+                            android:id="@+id/Number4"
                             android:text="Contact:+8809666700100"
                             android:textAlignment="center"
                             android:textColor="@color/black"
@@ -271,6 +286,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:id="@+id/Name5"
                             android:text="United Hospital"
                             android:textAlignment="center"
                             android:textColor="@color/black"
@@ -280,6 +296,7 @@
                         <TextView
                             android:layout_width="160dp"
                             android:layout_height="25dp"
+                            android:id="@+id/Address5"
                             android:text="Address:Plot 15,Road71,Gulshan,Dhaka 1212"
                             android:textAlignment="center"
                             android:textColor="@color/black"
@@ -290,6 +307,7 @@
                         <TextView
                             android:layout_width="114dp"
                             android:layout_height="15dp"
+                            android:id="@+id/Number5"
                             android:text="Contact:+88 02 8836444"
                             android:textAlignment="center"
                             android:textColor="@color/black"
@@ -326,6 +344,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:id="@+id/Name6"
                             android:text="Asgar Ali Hospital"
                             android:textAlignment="center"
                             android:textColor="@color/black"
@@ -335,6 +354,7 @@
                         <TextView
                             android:layout_width="160dp"
                             android:layout_height="25dp"
+                            android:id="@+id/Address6"
                             android:text="Address:111/1/A Distillery Road,GandariaDhaka-1204"
                             android:textAlignment="center"
                             android:textColor="@color/black"
@@ -345,6 +365,7 @@
                         <TextView
                             android:layout_width="124dp"
                             android:layout_height="15dp"
+                            android:id="@+id/Number6"
                             android:text="Contact:+8801787683333"
                             android:textAlignment="center"
                             android:textColor="@color/black"
@@ -1137,6 +1158,5 @@
 
 
     </ScrollView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

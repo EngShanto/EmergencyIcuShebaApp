@@ -13,8 +13,13 @@
         android:icon="@drawable/home_24"
         tools:ignore="HardcodedText" />
     <item
-        android:id="@+id/menu"
-        android:title="Menu"
+        android:id="@+id/bookingInfo"
+        android:title="Last Booking Information"
+        android:icon="@drawable/menu_24"
+        tools:ignore="HardcodedText" />
+    <item
+        android:id="@+id/AllBookingInfo"
+        android:title="Booking List"
         android:icon="@drawable/menu_24"
         tools:ignore="HardcodedText" />
     <item

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--suppress AndroidElementNotAllowed -->
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,7 +8,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background2"
-    tools:context=".ICU_Activity">
+    tools:context=".ICU_Activity"
+    tools:ignore="VisualLintBounds">
 
     <TextView
         android:id="@+id/icuSheet"
@@ -40,10 +42,11 @@
         app:layout_constraintVertical_bias="0.013"
         tools:ignore="HardcodedText" />
 
+
     <ListView
         android:id="@+id/List_View"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        android:layout_width="320dp"
+        android:layout_height="0dp"
         android:layout_margin="10dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"

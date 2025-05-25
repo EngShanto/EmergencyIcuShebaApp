@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Hospital Data Update"
+            android:textAlignment="center"
+            android:textColor="@color/Lime"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText,SpUsage,TextSizeCheck,TextContrastCheck" />
+
+        <!-- Current Name -->
+        <TextView
+            android:text="Current Name"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:layout_marginTop="14dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/textCurrentName"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#EEEEEE"
+            android:padding="8dp" />
+
+        <!-- New Name + Update -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp">
+
+            <EditText
+                android:id="@+id/editNewName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="New Name"
+                android:inputType="textPersonName"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:ignore="Autofill,HardcodedText,TextContrastCheck,TouchTargetSizeCheck,VisualLintTextFieldSize" />
+
+            <Button
+                android:id="@+id/btnUpdateName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Update"
+                tools:ignore="HardcodedText,DuplicateSpeakableTextCheck" />
+        </LinearLayout>
+
+        <!-- Current Address -->
+        <TextView
+            android:text="Current Address"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/textCurrentAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:background="#EEEEEE"
+            android:padding="8dp" />
+
+        <!-- New Address + Update -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp">
+
+            <EditText
+                android:id="@+id/editNewAddress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="New Address"
+                android:inputType="textPostalAddress"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:ignore="Autofill,HardcodedText,TouchTargetSizeCheck,TextContrastCheck,VisualLintTextFieldSize" />
+
+            <Button
+                android:id="@+id/btnUpdateAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Update"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+
+        <!-- Current Number -->
+        <TextView
+            android:text="Current Number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:layout_marginTop="16dp"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/textCurrentNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:background="#EEEEEE"
+            android:padding="8dp" />
+
+        <!-- New Number + Update -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp">
+
+            <EditText
+                android:id="@+id/editNewNumber"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="New Number"
+                android:inputType="phone"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:ignore="Autofill,HardcodedText,TextContrastCheck,TouchTargetSizeCheck,VisualLintTextFieldSize" />
+
+            <Button
+                android:id="@+id/btnUpdateNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Update"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+
+        <!-- Seat Header -->
+        <TextView
+            android:text="Available Seat :"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:layout_marginTop="16dp"
+            tools:ignore="HardcodedText" />
+
+        <!-- Dynamic Seat UI Layout (Table Format) -->
+        <TableLayout
+            android:id="@+id/seatLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="*"
+            android:padding="2dp"
+            android:background="#F5F5F5" />
+    <TextView
+        android:text="Total Seat :"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        android:layout_marginTop="16dp"
+        tools:ignore="HardcodedText" />
+
+    <!-- Dynamic Seat UI Layout (Table Format) -->
+    <TableLayout
+        android:id="@+id/TotalSeatLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*"
+        android:padding="2dp"
+        android:background="#F5F5F5" />
+</LinearLayout>
+</ScrollView>

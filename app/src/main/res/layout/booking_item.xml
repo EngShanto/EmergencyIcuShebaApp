@@ -1,0 +1,183 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:stretchColumns="*"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="?android:attr/selectableItemBackground">
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        tools:ignore="UselessParent">
+
+        <TableRow
+            android:id="@+id/Table_Row"
+            android:clickable="true"
+            android:focusable="true"
+            tools:ignore="TouchTargetSizeCheck">
+
+
+            <TextView
+                android:id="@+id/SerialNumber"
+                android:layout_width="45dp"
+                android:layout_height="30dp"
+                android:background="@drawable/border"
+                android:padding="4dp"
+                android:text="SiNo."
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,TextSizeCheck" />
+
+            <TextView
+                android:id="@+id/patientName"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:background="@drawable/border"
+                android:padding="4dp"
+                android:text="Patient Name"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,TextSizeCheck" />
+
+            <TextView
+                android:id="@+id/patientAddress"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:background="@drawable/border"
+                android:padding="4dp"
+                android:text="Patient Address"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,TextSizeCheck" />
+
+            <TextView
+                android:id="@+id/patientNumber"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:background="@drawable/border"
+                android:padding="4dp"
+                android:text="Patient Number"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,TextSizeCheck" />
+
+            <TextView
+                android:id="@+id/SeatType"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:background="@drawable/border"
+                android:padding="4dp"
+                android:text="Seat Type"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,VisualLintBounds" />
+
+            <TextView
+                android:id="@+id/bookingDate"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:background="@drawable/border"
+                android:padding="4dp"
+                android:text="Booking Date"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,VisualLintBounds" />
+
+            <TextView
+                android:id="@+id/bookingTime"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:background="@drawable/border"
+                android:padding="4dp"
+                android:text="Booking Time"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,VisualLintBounds" />
+
+            <TextView
+                android:id="@+id/NumberOfSeat"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:background="@drawable/border"
+                android:padding="4dp"
+                android:text="Number Of Seat"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,VisualLintBounds" />
+
+            <TextView
+                android:id="@+id/bookingStatus"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:background="@drawable/border"
+                android:padding="4dp"
+                android:text="Booking Status"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,VisualLintBounds" />
+
+            <RelativeLayout
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/border"
+                android:padding="4dp"
+                android:textAlignment="center"
+                tools:ignore="VisualLintBounds">
+
+                <ImageButton
+                    android:id="@+id/Approve_Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="50dp"
+                    android:background="@color/white"
+                    android:paddingStart="8dp"
+                    android:src="@drawable/baseline_done_24"
+                    tools:ignore="ContentDescription,RtlSymmetry" />
+
+                <ImageButton
+                    android:id="@+id/Reject_Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:background="@color/white"
+                    android:paddingEnd="15dp"
+                    android:src="@drawable/rejected"
+                    tools:ignore="ContentDescription,RtlSymmetry" />
+                <ImageButton
+                    android:id="@+id/Recovery_Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:background="@color/white"
+                    android:paddingEnd="15dp"
+                    android:src="@drawable/recovery__1_"
+                    tools:ignore="ContentDescription,RtlSymmetry" />
+
+                <ImageButton
+                    android:id="@+id/Delete_Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="50dp"
+                    android:background="@color/white"
+                    android:paddingStart="8dp"
+                    android:src="@drawable/deleted_icon"
+                    tools:ignore="ContentDescription,RtlSymmetry" />
+
+            </RelativeLayout>
+        </TableRow>
+    </TableLayout>
+</LinearLayout>

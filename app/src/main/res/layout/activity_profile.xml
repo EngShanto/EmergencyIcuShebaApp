@@ -1,0 +1,80 @@
+<!--suppress XmlUnusedNamespaceDeclaration -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/profileImageView"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center"
+        android:scaleType="centerCrop"
+        android:background="@color/black"
+        android:src="@drawable/ic_baseline_person_24"
+        tools:ignore="ContentDescription" />
+
+    <!-- Change Image Button -->
+    <Button
+        android:id="@+id/changeImageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Change Image"
+        android:textSize="10sp"
+        android:padding="2dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        tools:ignore="HardcodedText,SmallSp" />
+
+    <!-- Upload Button -->
+    <Button
+        android:id="@+id/uploadImageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Upload Image"
+        android:layout_gravity="center"
+        android:layout_marginTop="2dp"
+        tools:ignore="HardcodedText" />
+
+    <!-- Name -->
+    <TextView
+        android:id="@+id/nameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="16dp"
+        android:enabled="false"
+        android:hint="Name"
+        android:inputType="textPersonName"
+        tools:ignore="HardcodedText,TextViewEdits,TouchTargetSizeCheck" />
+
+    <!-- Email -->
+    <TextView
+        android:id="@+id/emailEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="4dp"
+        android:enabled="false"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        tools:ignore="HardcodedText,TextViewEdits,TouchTargetSizeCheck" />
+
+    <!-- Phone -->
+    <TextView
+        android:id="@+id/phoneEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="4dp"
+        android:enabled="false"
+        android:hint="Phone Number"
+        android:inputType="phone"
+        tools:ignore="HardcodedText,TextViewEdits,TouchTargetSizeCheck" />
+</LinearLayout>

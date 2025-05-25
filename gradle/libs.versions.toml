@@ -5,9 +5,16 @@ junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 appcompat = "1.7.0"
 material = "1.12.0"
-activity = "1.9.3"
-constraintlayout = "2.2.0"
-firebaseFirestore = "25.1.1"
+activity = "1.10.1"
+constraintlayout = "2.2.1"
+firebaseFirestore = "25.1.4"
+playServicesLocation = "21.3.0"
+places = "4.2.0"
+contentpager = "1.0.0"
+foundationAndroid = "1.8.1"
+media3Common = "1.6.1"
+recyclerview = "1.4.0"
+firebaseStorage = "21.0.1"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -18,6 +25,13 @@ material = { group = "com.google.android.material", name = "material", version.r
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }
+play-services-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "playServicesLocation" }
+places = { group = "com.google.android.libraries.places", name = "places", version.ref = "places" }
+contentpager = { group = "androidx.contentpager", name = "contentpager", version.ref = "contentpager" }
+foundation-android = { group = "androidx.compose.foundation", name = "foundation-android", version.ref = "foundationAndroid" }
+media3-common = { group = "androidx.media3", name = "media3-common", version.ref = "media3Common" }
+recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
+firebase-storage = { group = "com.google.firebase", name = "firebase-storage", version.ref = "firebaseStorage" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

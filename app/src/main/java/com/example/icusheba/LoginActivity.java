@@ -1,144 +1,188 @@
 package com.example.icusheba;
+
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
+import android.text.InputType;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
+
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+
 public class LoginActivity extends AppCompatActivity {
-    EditText edEmail, edPassword;
-    TextView tv;
-    TextView ForgetPassword;
-    Button btn;
+
+    EditText editTextEmail, editTextPassword;
+    Button loginButton;
+    TextView createAccount, forgetPassword;
+    ImageView eyeIcon;
+
+    boolean isPasswordVisible = false;
     FirebaseAuth sAuth;
     FirebaseFirestore sStore;
-    boolean valid = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate( savedInstanceState );
-        EdgeToEdge.enable( this );
-        setContentView( R.layout.activity_login );
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
+
         sAuth = FirebaseAuth.getInstance();
         sStore = FirebaseFirestore.getInstance();
-        edEmail = findViewById( R.id.editTextEmail );
-        edPassword = findViewById( R.id.editTextPassword );
-        tv = findViewById( R.id.CreateAccount);
-        ForgetPassword = findViewById( R.id.Forget_Password );
-        btn = findViewById( R.id.Login_button );
 
-        ForgetPassword.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String emailAddress = edEmail.getText().toString().trim();
-                if (emailAddress == null || emailAddress.isEmpty()) {
-                    Toast.makeText(LoginActivity.this, "Please enter your email address", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                sAuth.sendPasswordResetEmail(emailAddress).addOnCompleteListener( new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()){
-                            Toast.makeText(LoginActivity.this,"Check your email",Toast.LENGTH_SHORT).show();
-                        }else {
-                            Toast.makeText(LoginActivity.this,"Error"+ Objects.requireNonNull( task.getException() ).getMessage(),Toast.LENGTH_SHORT).show();
+        editTextEmail = findViewById(R.id.editTextEmail);
+        editTextPassword = findViewById(R.id.editTextPassword);
+        loginButton = findViewById(R.id.Login_button);
+        createAccount = findViewById(R.id.CreateAccount);
+        forgetPassword = findViewById(R.id.Forget_Password);
+        eyeIcon = findViewById(R.id.eyeIcon);
+
+        // Password show/hide toggle
+        eyeIcon.setOnClickListener(v -> {
+            if (isPasswordVisible) {
+                editTextPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                eyeIcon.setImageResource(R.drawable.ic_eye_show);
+            } else {
+                editTextPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                eyeIcon.setImageResource(R.drawable.ic_eye_hide);
+            }
+            editTextPassword.setSelection(editTextPassword.getText().length());
+            isPasswordVisible = !isPasswordVisible;
+        });
+
+        // Login button click handler
+        loginButton.setOnClickListener(v -> {
+            if (!isInternetAvailable()) {
+                Toast.makeText(this, "No internet connection", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            String email = editTextEmail.getText().toString().trim();
+            String password = editTextPassword.getText().toString().trim();
+
+            if (email.isEmpty()) {
+                editTextEmail.setError("Email required");
+                editTextEmail.requestFocus();
+                return;
+            }
+
+            if (password.isEmpty()) {
+                editTextPassword.setError("Password required");
+                editTextPassword.requestFocus();
+                return;
+            }
+
+            sAuth.signInWithEmailAndPassword(email, password)
+                    .addOnSuccessListener(authResult -> {
+                        Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show();
+                        checkUserAccessLevel(Objects.requireNonNull(sAuth.getCurrentUser()).getUid());
+                    })
+                    .addOnFailureListener(e -> {
+                        if (e instanceof FirebaseAuthInvalidUserException) {
+                            Toast.makeText(LoginActivity.this, "Invalid Email", Toast.LENGTH_SHORT).show();
+                            editTextEmail.requestFocus();
+                        } else if (e instanceof FirebaseAuthInvalidCredentialsException) {
+                            Toast.makeText(LoginActivity.this, "Invalid Password", Toast.LENGTH_SHORT).show();
+                            editTextPassword.requestFocus();
+                        } else {
+                            Toast.makeText(LoginActivity.this, "Login failed: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    });
+        });
+
+        // Create account click
+        createAccount.setOnClickListener(v ->
+                startActivity(new Intent(LoginActivity.this, RegisterActivity.class)));
+
+        // Forgot password click
+        forgetPassword.setOnClickListener(v -> {
+            String email = editTextEmail.getText().toString().trim();
+            if (email.isEmpty()) {
+                Toast.makeText(this, "Enter email to reset password", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            sAuth.sendPasswordResetEmail(email)
+                    .addOnSuccessListener(unused ->
+                            Toast.makeText(this, "Reset link sent to your email", Toast.LENGTH_SHORT).show())
+                    .addOnFailureListener(e ->
+                            Toast.makeText(this, "Failed: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+        });
+    }
+
+    private boolean isInternetAvailable() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm != null ? cm.getActiveNetworkInfo() : null;
+        //noinspection deprecation
+        return netInfo != null && netInfo.isConnected();
+    }
+
+    private void checkUserAccessLevel(String uid) {
+        sStore.collection("Users").document(uid)
+                .get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    if (documentSnapshot.exists()) {
+
+                        // Check User role
+                        if (documentSnapshot.getString("isUser") != null) {
+                            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                            finish();
+                            return;
                         }
 
+                        // Check Admin role
+                        if (documentSnapshot.getString("isAdmin") != null) {
+                            startActivity(new Intent(LoginActivity.this, AdminActivity.class));
+                            finish();
+                            return;
+                        }
+
+                        // Dynamic Hospital access check
+                        Map<String, Object> data = documentSnapshot.getData();
+                        if (data != null) {
+                            for (Map.Entry<String, Object> entry : data.entrySet()) {
+                                String key = entry.getKey();
+                                Object value = entry.getValue();
+
+                                if (key.startsWith("is") && !key.equals("isUser") && !key.equals("isAdmin")) {
+                                    if ((value instanceof Boolean && (Boolean) value) ||
+                                            (value instanceof String && !((String) value).isEmpty())) {
+                                        startActivity(new Intent(LoginActivity.this, HrDepartmentActivity.class));
+                                        finish();
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+
+                        Toast.makeText(LoginActivity.this, "No valid access role found.", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(LoginActivity.this, "User data not found.", Toast.LENGTH_SHORT).show();
                     }
-                } );
-            }
-        } );
-
-        btn.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                checkField(edEmail);
-                checkField(edPassword);
-                if (valid) {
-                    sAuth.signInWithEmailAndPassword(edEmail.getText().toString(),edPassword.getText().toString()).addOnSuccessListener( new OnSuccessListener<AuthResult>() {
-                        @Override
-                        public void onSuccess(AuthResult authResult) {
-                            Toast.makeText(LoginActivity.this, "Login Successfully", Toast.LENGTH_SHORT).show();
-                            checkUserAccessLevel(sAuth.getCurrentUser().getUid());
-
-
-                        }
-                    } ).addOnFailureListener( new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
-
-                        }
-                    } );
-                }
-
-            }
-        } );
-
-
-
-        tv.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),RegisterActivity.class) );
-            }
-        } );
-        ViewCompat.setOnApplyWindowInsetsListener( findViewById( R.id.main ), (v, insets) -> {
-            Insets systemBars = insets.getInsets( WindowInsetsCompat.Type.systemBars() );
-            v.setPadding( systemBars.left, systemBars.top, systemBars.right, systemBars.bottom );
-            return insets;
-        } );
+                })
+                .addOnFailureListener(e ->
+                        Toast.makeText(LoginActivity.this, "Access check failed: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
 
-    private void checkUserAccessLevel(String Uid) {
-        DocumentReference df = sStore.collection("Users").document(Uid);
-        //Extract the data for the document
-        df.get().addOnSuccessListener( new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                Log.d("Tag","onSuccess: "+ documentSnapshot.getData());
-                //identify User
-                if (documentSnapshot.getString("isUser") != null) {
-                    startActivity( new Intent( getApplicationContext(), HomeActivity.class ) );
-                    finish();
-                }
-                if (documentSnapshot.getString("isAdmin") != null) {
-                    startActivity( new Intent( getApplicationContext(), AdminActivity.class ) );
-                    finish();
-                }
-            }
-        } );
+    // Auto-login if already logged in user detected
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = sAuth.getCurrentUser();
+        if (currentUser != null) {
+            checkUserAccessLevel(currentUser.getUid());
+        }
     }
-
-    public boolean checkField(EditText textField) {
-        if (textField.getText().toString().isEmpty()) {
-            textField.setError( "Error" );
-            valid = false;
-        } else {
-            valid = true;
-    }
-        return valid;
-    }
-
 }

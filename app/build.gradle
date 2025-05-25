@@ -1,15 +1,24 @@
 plugins {
-    id ("com.android.application")
-    id("com.google.gms.google-services")
+    id 'com.android.application'
+    id 'com.google.gms.google-services'
 }
 
 android {
     namespace 'com.example.icusheba'
-    compileSdk 34
+    compileSdk 35
+    signingConfigs {
+        release {
+            storeFile file("app/release-key.jks")
+            storePassword "12345678"
+            keyAlias "icusheba"
+            keyPassword "12345678"
+        }
+    }
 
     defaultConfig {
         applicationId "com.example.icusheba"
         minSdk 24
+        //noinspection OldTargetApi
         targetSdk 34
         versionCode 1
         versionName "1.0"
@@ -19,6 +28,7 @@ android {
 
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -31,19 +41,73 @@ android {
 
 dependencies {
 
+    // Android libraries
     implementation libs.appcompat
     implementation libs.material
     implementation libs.activity
     implementation libs.constraintlayout
+    implementation libs.firebase.storage
+
+    // Testing dependencies
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
-    implementation ("com.google.firebase:firebase-auth:23.1.0")
-    implementation("com.google.firebase:firebase-bom:33.7.0")
-    implementation("com.google.firebase:firebase-auth")
-    implementation ("com.google.firebase:firebase-firestore:25.1.1")
-    implementation ("com.google.android.gms:play-services-maps:19.0.0")
-    implementation ('com.google.firebase:firebase-database:21.0.0')
+
+    // Firebase SDK with BOM for version management
+    //noinspection UseTomlInstead
+    implementation platform("com.google.firebase:firebase-bom:33.14.0")
+    //noinspection UseTomlInstead
+    implementation "com.google.firebase:firebase-auth"
+    //noinspection UseTomlInstead
+    implementation "com.google.firebase:firebase-firestore"
+    //noinspection UseTomlInstead
+    implementation "com.google.firebase:firebase-database"
+    //noinspection UseTomlInstead
+    implementation "com.google.firebase:firebase-messaging"
+    //noinspection UseTomlInstead
+    implementation "com.google.firebase:firebase-analytics"
+    //noinspection UseTomlInstead
+    implementation "com.firebaseui:firebase-ui-firestore:8.0.2"
+
+    // Google Play services and Firebase Maps
+    //noinspection UseTomlInstead
+    implementation "com.google.android.gms:play-services-maps:19.2.0"
+    //noinspection UseTomlInstead
+    implementation "com.google.android.gms:play-services-location:21.3.0"
+
+    // Networking libraries
+    //noinspection UseTomlInstead
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+    //noinspection UseTomlInstead
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.12.0'
+
+    // Media3 for ExoPlayer and other media features
+    //noinspection UseTomlInstead
+    implementation 'androidx.media3:media3-exoplayer:1.7.1'
+    //noinspection UseTomlInstead
+    implementation 'androidx.media3:media3-ui:1.7.1'
+    //noinspection UseTomlInstead
+    implementation 'androidx.media3:media3-session:1.7.1'
+    //noinspection UseTomlInstead
+    implementation 'androidx.media3:media3-datasource-okhttp:1.7.1'
+
+    // Image loading library
+    //noinspection UseTomlInstead
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+    //noinspection UseTomlInstead
+    implementation 'com.google.android.gms:play-services-maps:19.2.0'
+    //noinspection UseTomlInstead,UseTomlInstead
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
+    //noinspection UseTomlInstead
+    implementation 'androidx.drawerlayout:drawerlayout:1.2.0'
+    //noinspection UseTomlInstead
+    implementation 'com.google.android.material:material:1.12.0'
+    //noinspection UseTomlInstead
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+    //noinspection UseTomlInstead
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.16.0'
+    //noinspection UseTomlInstead
+    implementation 'com.google.firebase:firebase-appcheck-playintegrity:18.0.0'
 
 
 }
